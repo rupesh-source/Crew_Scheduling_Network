@@ -1,0 +1,38 @@
+
+-----------------**Crew Allocation Rules**-----------------------------
+
+Delhi Metro crew allocation is governed by the "Hours of Work and Periods of Rest (HOER)" rules prescribed by the organization. These rules are subject to periodic updates. The key constraints are as follows:
+
+1. **Service Continuity:**
+   The end station of a service must be the same as the start station of the following service in the duty.
+
+2. **Time Feasibility:**
+   The end time of a service must not exceed the start time of the subsequent service.
+
+3. **Maximum Duty Hours:**
+   The total time of a duty must not exceed 445 minutes.
+   *Special case:* For morning duties (starting before 6:00 AM) and evening duties (starting after 23:30 PM), the maximum duty hours are restricted to 405 minutes.
+
+4. **Maximum Driving Time:**
+   The cumulative driving duration within a duty must not exceed 360 minutes.
+   Driving duration is calculated as the sum of service times and any gap between consecutive services that is less than 30 minutes.
+
+5. **Continuous Driving Limit:**
+   No more than 180 minutes of continuous driving is allowed without a break.
+
+6. **Break Conditions:**
+   Breaks must satisfy one of the following cases:
+
+   * Case 1: At least one 30-minute break and one 50-minute break, with total break duration less than 120 minutes.
+   * Case 2: Only one break of at least 50 minutes, with total break duration less than 120 minutes.
+
+7. **Jurisdiction Constraint:**
+   A duty must begin and end in the same jurisdiction (lobby group), ensuring logistical feasibility.
+
+8. **Continuous Driving Reset Rules:**
+   Continuous driving between 120–180 minutes requires a mandatory 50-minute break, and a break of 30 minutes resets the continuous driving counter.
+
+9. **Designated Break Locations:**
+   Breaks are allowed only at designated stations, with at least one break occurring in the same jurisdiction as the starting station.
+
+
