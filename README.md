@@ -95,18 +95,3 @@ Dependencies
 To install dependencies, run:
 pip install pandas numpy networkx
 
-
-Next Steps
------------
-- Extend this phase with a Set Covering Optimization Model to select optimal duties.
-- Add visualization for the service graph and feasible crew paths.
-- Automate rule validation for improved computational efficiency.
-
-
-Author
--------
-Project Developer: Rupesh Sonawane
-Project: Delhi Metro Crew Allocation
-Notebook: Ultimate_phase_1.ipynb
-Dataset: mainLoop_aadesh.csv
-Date: October 2025
