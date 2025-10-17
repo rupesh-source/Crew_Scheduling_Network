@@ -1,5 +1,3 @@
-Delhi Metro Crew Allocation – README
-
 Project Overview
 ----------------
 This project focuses on generating feasible crew duty schedules for the Delhi Metro Rail Corporation (DMRC).
