@@ -1,0 +1,72 @@
+Crew Allocation Rules
+
+Delhi Metro crew allocation is governed by the "Hours of Work and Periods of Rest (HOER)" rules defined by the organization. These rules are periodically updated.  
+The main constraints considered in this study are as follows:
+
+1. Service Continuity:  
+   The end station of one service must be the same as the start station of the next service in a duty.  
+   EndStation(Sᵢ) = StartStation(Sᵢ₊₁),  for all i ∈ {1, 2, …, k−1}
+
+2. Time Feasibility:  
+   The end time of a service must not exceed the start time of the next service.  
+   EndTime(Sᵢ) ≤ StartTime(Sᵢ₊₁),  for all i ∈ {1, 2, …, k−1}
+
+3. Jurisdiction Constraint:  
+   Each duty must start and end within the same jurisdiction to maintain operational feasibility.
+
+4. Rake Change Constraint:  
+   Rake changes are allowed only at stations KKDA and PVGW.
+
+5. Maximum Duty Hours:  
+   The total duration of a duty must not exceed 445 minutes.  
+   Special cases:  
+   - Morning duties (start before 06:00 AM)  
+   - Evening duties (start after 23:30 PM)  
+   In both these cases, the limit is 405 minutes.  
+
+   DutyDuration ≤ 445 minutes  
+   DutyDuration ≤ 405 minutes  (for morning/evening shifts)
+
+6. Maximum Driving Time:  
+   The cumulative driving time in a duty must not exceed 360 minutes.  
+   Driving time is calculated as the sum of service times and any short gaps (less than 30 minutes) between consecutive services.  
+
+   DrivingDuration = Σ(ServiceTime(Sᵢ)) + Σ(Gap(Sᵢ, Sᵢ₊₁)), for all gaps < 30 minutes  
+   DrivingDuration ≤ 360 minutes
+
+7. Continuous Driving Limit:  
+   Continuous driving time must not exceed 180 minutes without a 30-minute break.  
+
+   ContinuousDrivingTime ≤ 180 minutes
+
+8. Break Conditions:  
+   A valid duty must include at least one break at a valid break station (KKDA or PVGW).  
+   At least one break must occur within the jurisdiction of the first duty’s start station.  
+
+   - The total duration of all breaks must be less than 120 minutes.  
+   - Breaks must satisfy one of the following conditions:  
+
+     Case 1: Exactly one break of at least 50 minutes.  
+     Case 2: Multiple breaks satisfying the following rules:  
+       - If there is a 30-minute break, there must also be a 50-minute (or longer) break.  
+       - Two breaks of 50 minutes or more are valid.  
+       - Three breaks of durations ≥30, ≥30, and ≥50 minutes are also valid.
+
+
+Configuration Input Variables
+
+- MIN_RAKE_GAP_MINUTES: Minimum required gap between different rakes.  
+- ALLOWED_RAKE_CHANGE_STATIONS: Stations where rake changes are allowed.  
+- MAX_CONNECTION_GAP_MINUTES: Maximum allowed gap between consecutive services.  
+- BREAK_STATIONS: Stations where breaks are permitted.  
+- CUMULATIVE_BREAKS_DURATION: Maximum total duration of breaks in a duty.  
+- SHORT_BREAK: Duration of a short break in minutes.  
+- LONG_BREAK: Duration of a long break in minutes.  
+- DUTY_TIME_LIMIT: Maximum total duty time for a standard shift.  
+- MORN_EVEN_DUTY_TIME_LIMIT: Maximum duty time for morning and evening shifts.  
+- MORNING_SHIFT_CUTOFF: Cutoff time (in minutes) for morning shift duties.  
+- EVENING_SHIFT_CUTOFF: Cutoff time (in minutes) for evening shift duties.  
+- CONTINUOUS_DRIVE_LIMIT: Maximum continuous driving time without a break longer than 30 minutes.  
+- DRIVING_TIME_LIMIT: Maximum total driving time including short breaks.  
+- JURISDICTION_BUCKETS:  
+  The Delhi Metro Pink Line operates with two jurisdiction groups. The start station of the first service and the end station of the last service in a duty must belong to the same jurisdiction for logistical feasibility.
